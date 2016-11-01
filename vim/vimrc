@@ -18,11 +18,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Add or remove your Bundles here:
 NeoBundle 'bling/vim-airline'
 
-" You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
-
-" Installing jellybeans color scheme
-NeoBundle 'nanotech/jellybeans.vim'
 
 " Installing file tree package nerdtree
 NeoBundle 'scrooloose/nerdtree'
@@ -31,6 +26,9 @@ NeoBundle 'jistr/vim-nerdtree-tabs'
 " Installing json syntax highlight
 NeoBundle 'elzr/vim-json'
 
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'mhartington/oceanic-next'
+NeoBundle 'marciomazza/vim-brogrammer-theme'
 " Required:
 call neobundle#end()
 
@@ -73,7 +71,9 @@ set history=50
 set cscopeprg=/usr/bin/cscope                                                                                                          
 set background=dark                                                                                                             
 "color ir_black 
-color jellybeans
+"color jellybeans
+"colorscheme OceanicNext
+color brogrammer
 set hls     
 set t_Co=256                                                                                                                          
 "set tags+=~/.vim/tags/cpp                                                                                                              
@@ -128,5 +128,13 @@ set shiftwidth=4
 set cursorline
 
 " Setting for vim-airline
+let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 let g:airline_powerline_fonts = 1
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"let g:airline_theme='oceanicnext'
+
+"if (has("termguicolors"))
+"    set termguicolors
+"endif
+
