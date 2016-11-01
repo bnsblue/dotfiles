@@ -29,9 +29,7 @@ bind x lock-server
 unbind ^C
 bind ^C new-window
 # bind c
-#bind c new-window
-# bind c new-window -c "#{pane_current_path}"
-bind c new-window -c "$PWD"
+bind c new-window
 
 # detach ^D d
 unbind ^D
@@ -119,10 +117,8 @@ bind '"' choose-window
 
 # split windows like vim
 # vim's definition of a horizontal/vertical split is reversed from tmux's
-#bind s split-window -c "#{pane_current_path}" -v
-#bind v split-window -c "#{pane_current_path}" -h
-bind s split-window -c "$PWD" -v
-bind v split-window -c "$PWD" -h
+bind s split-window -v
+bind v split-window -h
 
 # move around panes with hjkl, as one would in vim after pressing ctrl-w
 bind h select-pane -L
@@ -179,19 +175,19 @@ bind V select-layout even-horizontal
 
 # Toggle mouse on with ^B m
 bind m \
-set -g mode-mouse on \; \
-set -g mouse-resize-pane on \; \
-set -g mouse-select-pane on \; \
-set -g mouse-select-window on \; \
-display-message "Mouse: ON"
+set -g mode-mouse on \;\
+set -g mouse-resize-pane on \;\
+set -g mouse-select-pane on \;\
+set -g mouse-select-window on \;\
+display 'Mouse: ON'
 
 # Toggle mouse off with ^B M
 bind M \
-set -g mode-mouse off \; \
-set -g mouse-resize-pane off \; \
-set -g mouse-select-pane off \; \
-set -g mouse-select-window off \; \
-display-message "Mouse: OFF"
+set -g mode-mouse off \;\
+set -g mouse-resize-pane off \;\
+set -g mouse-select-pane off \;\
+set -g mouse-select-window off \;\
+display 'Mouse: OFF'
 
 
 
@@ -207,14 +203,7 @@ bind - \
   swap-pane -s tmux-zoom.0 \;\
   kill-window -t tmux-zoom
 
-set -g default-terminal "screen-256color:TC"
-
-# reload config file
-bind r source-file ~/.tmux.conf \; \
-    display-message "Reloaded config file."
-
-
-source "$HOME/.local/lib/python2.7/site-packages/powerline/bindings/tmux/powerline.conf"
-
-# Getting rid of the delay after hitting <ESC> 
-set -g escape-time 10
+#source ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/tmux/powerline.conf
+source /home/hsuch/.local/lib/python2.7/site-packages/powerline/bindings/tmux/powerline.conf
+#set-option -g default-terminal "screen-256color"
+#set -g default-terminal "screen-256color"
