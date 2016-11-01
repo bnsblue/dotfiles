@@ -1,44 +1,51 @@
-"NeoBundle Scripts-----------------------------
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
 " Required:
-call neobundle#begin(expand('$HOME/.vim/bundle'))
+set runtimepath+=/home/hsuch/.vim/dein.vim/repos/github.com/Shougo/dein.vim
 
-" Let NeoBundle manage NeoBundle
 " Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+call dein#begin('/home/hsuch/.vim/dein.vim')
 
-" Add or remove your Bundles here:
-NeoBundle 'bling/vim-airline'
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
 
+" Add or remove your plugins here:
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
 
-" Installing file tree package nerdtree
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'jistr/vim-nerdtree-tabs'
+" You can specify revision/branch/tag.
+call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+call dein#add('bling/vim-airline')
+call dein#add('scrooloose/nerdtree')
+call dein#add('jistr/vim-nerdtree-tabs')
 
 " Installing json syntax highlight
-NeoBundle 'elzr/vim-json'
+call dein#add('elzr/vim-json')
 
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'mhartington/oceanic-next'
-NeoBundle 'marciomazza/vim-brogrammer-theme'
+call dein#add('nanotech/jellybeans.vim')
+call dein#add('mhartington/oceanic-next')
+call dein#add('marciomazza/vim-brogrammer-theme')
+
 " Required:
-call neobundle#end()
+call dein#end()
 
 " Required:
 filetype plugin indent on
+syntax enable
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-"End NeoBundle Scripts-------------------------
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
+
+
 
 
 filetype plugin indent on    " required
