@@ -30,6 +30,9 @@ call dein#add('elzr/vim-json')
 call dein#add('nanotech/jellybeans.vim')
 call dein#add('mhartington/oceanic-next')
 call dein#add('marciomazza/vim-brogrammer-theme')
+call dein#add('tyrannicaltoucan/vim-quantum')
+call dein#add('philpl/vim-adventurous')
+call dein#add('Marfisc/vorange')
 
 " Required:
 call dein#end()
@@ -81,6 +84,14 @@ set background=dark
 "color jellybeans
 "colorscheme OceanicNext
 color brogrammer
+"colorscheme quantum
+"colorscheme adventurous
+color vorange
+let g:vorange_bold = 0
+let g:vorange_italic = 0
+let g:vorange_underline = 0
+let g:vorange_undercurl = 0
+
 set hls     
 set t_Co=256                                                                                                                          
 "set tags+=~/.vim/tags/cpp                                                                                                              
@@ -145,3 +156,8 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "    set termguicolors
 "endif
 
+
+"let g:airline_theme = 'quantum'
+
+"let g:quantum_black = 1 
+let g:airline_theme="vorange"
