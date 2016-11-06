@@ -85,8 +85,8 @@ set background=dark
 "colorscheme OceanicNext
 color brogrammer
 "colorscheme quantum
-"colorscheme adventurous
-color vorange
+colorscheme adventurous
+"color vorange
 let g:vorange_bold = 0
 let g:vorange_italic = 0
 let g:vorange_underline = 0
