@@ -1,23 +1,26 @@
-export LC_ALL=en_US.UTF-8 
-export LANG=en_US.UTF-8
+# export LC_ALL=en_US.UTF-8 
+# export LANG=en_US.UTF-8
+# 
+# # MacPorts Installer addition on 2016-06-11_at_20:52:02: adding an appropriate PATH variable for use with MacPorts.
+# # export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# export PATH="/usr/local/bin:/usr/local/share/python:$PATH"
+# # Finished adapting your PATH environment variable for use with MacPorts.
+# 
+# alias ls='ls -Gp --color=tty'
+# alias tmux='tmux -2'
+# 
+# export PATH="$PATH:$HOME/.local/bin"
+# 
+# # POWERLINE_CONFIG_COMMAND variable should point to the location of the script `powerline-config`
+# export POWERLINE_CONFIG_COMMAND="/home/hsuch/.local/bin/powerline-config"
+# 
+# # Enabling powerline for bash prompt
+# powerline-daemon -q
+# POWERLINE_BASH_CONTINUATION=1
+# POWERLINE_BASH_SELECT=1
+# 
+# . $HOME/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 
-# MacPorts Installer addition on 2016-06-11_at_20:52:02: adding an appropriate PATH variable for use with MacPorts.
-# export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-export PATH="/usr/local/bin:/usr/local/share/python:$PATH"
-# Finished adapting your PATH environment variable for use with MacPorts.
-
-alias ls='ls -Gp --color=tty'
-alias tmux='tmux -2'
-
-export PATH="$PATH:$HOME/.local/bin"
-
-# POWERLINE_CONFIG_COMMAND variable should point to the location of the script `powerline-config`
-export POWERLINE_CONFIG_COMMAND="/home/hsuch/.local/bin/powerline-config"
-
-# Enabling powerline for bash prompt
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-
-. $HOME/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
-
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
