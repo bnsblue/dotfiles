@@ -32,11 +32,12 @@ function help {
 
 
 function setup_shell {
-    echo "%%% $1 $2 $3"
+    echo "%%% $1 $2 $3 $4"
 
-    do_change=$1
-    which_shell=$2
-    want_ros=$3
+    os_str=$1
+    do_change=$2
+    which_shell=$3
+    want_ros=$4
 
     if [[ $do_change = false ]]; then
         return 0
@@ -57,22 +58,22 @@ function setup_shell {
         shell="bash"
         echo "Setting up for $shell"
         if [[ $want_ros = true ]]; then
-            shrc_ln_src="$SETUP_SCRIPT_DIR/${shell}/${shell}rc.${OS_STR}+ros"
+            shrc_ln_src="$SETUP_SCRIPT_DIR/${shell}/${shell}rc.${os_str}+ros"
     	else
-            shrc_ln_src="$SETUP_SCRIPT_DIR/${shell}/${shell}rc.${OS_STR}"
+            shrc_ln_src="$SETUP_SCRIPT_DIR/${shell}/${shell}rc.${os_str}"
         fi        
 
     elif [ $which_shell = "zsh" ]; then
         shell="zsh"
         echo "Setting up for ${shell}"
         if [[ $want_ros = true ]]; then
-            shrc_ln_src="$SETUP_SCRIPT_DIR/${shell}/${shell}rc.${OS_STR}+ros"
+            shrc_ln_src="$SETUP_SCRIPT_DIR/${shell}/${shell}rc.${os_str}+ros"
     	else
-            shrc_ln_src="$SETUP_SCRIPT_DIR/${shell}/${shell}rc.${OS_STR}"
+            shrc_ln_src="$SETUP_SCRIPT_DIR/${shell}/${shell}rc.${os_str}"
         fi
     fi
 
-    sh_profile_ln_src="$SETUP_SCRIPT_DIR/${shell}/${shell}_profile.${OS_STR}"
+    sh_profile_ln_src="$SETUP_SCRIPT_DIR/${shell}/${shell}_profile.${os_str}"
     shrc_ln_tgt="$HOME/.${shell}rc"
     shrc_ln_tgt_bak="$HOME/.${shell}rc.bak"
     sh_profile_ln_tgt="$HOME/.${shell}_profile"
@@ -100,7 +101,7 @@ function setup_tmux {
     fi
     
     echo "=== tmux ===" 
-    tmux_ln_src="$SETUP_SCRIPT_DIR/tmux/tmux.conf.${OS_STR}"
+    tmux_ln_src="$SETUP_SCRIPT_DIR/tmux/tmux.conf.${os_str}"
     tmux_ln_tgt="$HOME/.tmux.conf"
     tmux_ln_tgt_bak="$HOME/.tmux.conf.bak"
 
@@ -177,7 +178,7 @@ echo "WHICH_SHELL=$WHICH_SHELL"
 echo "VIM=$VIM"
 echo "TMUX=$TMUX"
 
-setup_shell $SHELL $WHICH_SHELL $ROS
+setup_shell $OS_STR $SHELL $WHICH_SHELL $ROS 
 setup_tmux $TMUX
 setup_vim $VIM
 
