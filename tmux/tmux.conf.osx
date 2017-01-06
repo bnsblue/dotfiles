@@ -211,4 +211,4 @@ bind r source-file ~/.tmux.conf \; \
     display-message "Reloaded config file."
 
 
-source '/Users/changhong/Library/Python/2.7/lib/python/site-packages/powerline/bindings/tmux/powerline.conf'
+source '/Users/bnsblue/Library/Python/2.7/lib/python/site-packages/powerline/bindings/tmux/powerline.conf'
