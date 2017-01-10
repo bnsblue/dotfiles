@@ -5,6 +5,7 @@ SHELL=false
 WHICH_SHELL="bash"
 TMUX=false
 VIM=false
+DOTFILE_DIR=$HOME/.dotfiles
 
 OS_STR=""
 case $OSTYPE in
@@ -30,6 +31,9 @@ function help {
     echo "HELP"
 }
 
+function setup_dir {
+    mkdir $DOTFILE_DIR
+}
 
 function setup_shell {
     echo "%%% $1 $2 $3 $4"
@@ -48,7 +52,7 @@ function setup_shell {
     shrc_ln_src=""
     shrc_ln_tgt="$HOME/.bashrc"
     shrc_ln_tgt_bak="$HOME/.bashrc.bak"
-    sh_profile_ln_src=""
+    sh_profile_ln_src_path=""
     sh_profile_ln_tgt="$HOME/.bash_profile"
     sh_profile_ln_tgt_bak="$HOME/.bashrc.bak"
 
@@ -87,11 +91,26 @@ function setup_shell {
         echo "backing up $sh_profile_ln_tgt to $sh_profile_ln_tgt_bak"
         mv $sh_profile_ln_tgt $sh_profile_ln_tgt_bak
     fi
-    echo "linking $shrc_ln_src to $shrc_ln_tgt"
-    ln -fs $shrc_ln_src $shrc_ln_tgt
 
-    echo "linking $sh_profile_ln_src to $sh_profile_ln_tgt"
-    ln -fs $sh_profile_ln_src $sh_profile_ln_tgt
+    cp $shrc_ln_src $DOTFILE_DIR/
+    cp $sh_profile_ln_src $DOTFILE_DIR/
+
+    shrc_ln_src_basename=${shrc_ln_src##*/}
+    sh_profile_ln_src_basename=${sh_profile_ln_src##*/}
+
+    shrc_new_ln_src=$DOTFILE_DIR/$shrc_ln_src_basename
+    sh_profile_new_ln_src=$DOTFILE_DIR/$sh_profile_ln_src_basename
+
+    echo $shrc_new_ln_src
+    echo $sh_profile_new_ln_src
+
+
+    echo "linking $shrc_new_ln_src to $shrc_ln_tgt"
+    ln -fs $shrc_new_ln_src $shrc_ln_tgt
+
+    echo "linking $sh_profile_new_ln_src to $sh_profile_ln_tgt"
+    ln -fs $sh_profile_new_ln_src $sh_profile_ln_tgt
+
 }
 
 function setup_tmux {
@@ -110,9 +129,19 @@ function setup_tmux {
         mv $tmux_ln_tgt $tmux_ln_tgt_bak
     fi
 
-    echo "linking $tmux_ln_src to $tmux_ln_tgt"
-    ln -fs $tmux_ln_src $tmux_ln_tgt
+    mkdir -pv $DOTFILE_DIR
+    cp $tmux_ln_src $DOTFILE_DIR/
+
+    tmux_ln_src_basename=${tmux_ln_src##*/}
+
+    tmux_ln_new_src=$DOTFILE_DIR/$tmux_ln_src_basename
+
+  
+
+    echo "linking $tmux_ln_new_src to $tmux_ln_tgt"
+    ln -fs $tmux_ln_new_src $tmux_ln_tgt
     
+    sleep 15
 }
 
 function setup_vim {
@@ -132,8 +161,14 @@ function setup_vim {
         mv $vim_ln_tgt $vim_ln_tgt_bak
     fi
 
-    echo "linking $vim_ln_src to $vim_ln_tgt"
-    ln -fs $vim_ln_src $vim_ln_tgt
+    mkdir -pv $DOTFILE_DIR
+    cp $vim_ln_src $DOTFILE_DIR/
+
+    vim_ln_src_basename=${vim_ln_src##*/}
+
+    vim_ln_new_src=$DOTFILE_DIR/$vim_ln_src_basename
+    echo "linking $vim_ln_new_src to $vim_ln_tgt"
+    ln -fs $vim_ln_new_src $vim_ln_tgt
     
 }
 
@@ -178,6 +213,7 @@ echo "WHICH_SHELL=$WHICH_SHELL"
 echo "VIM=$VIM"
 echo "TMUX=$TMUX"
 
+setup_dir
 setup_shell $OS_STR $SHELL $WHICH_SHELL $ROS 
 setup_tmux $TMUX
 setup_vim $VIM
