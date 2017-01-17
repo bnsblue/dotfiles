@@ -1,0 +1,26 @@
+Host *
+    StrictHostKeyChecking ask
+
+Host clarity01 clarity02 clarity03 clarity04 clarity05 clarity06 clarity07 clarity08 clarity09 clarity10 clarity11 clarity12 clarity13 clarity14 clarity15 clarity16 clarity17 clarity18 clarity19 clarity20 clarity21 clarity22 clarity23 clarity24 clarity25 clarity26 clarity27 clarity28 clarity29 clarity30 clarity31 clarity32 clarity33 clarity-stratix clarity-harp clarity-virtex
+    HostName %h.eecs.umich.edu
+    User hsuch
+    IdentityFile ~/.ssh/id_rsa
+    ForwardX11 yes
+
+Host clarity17
+    HostName clarity17.eecs.umich.edu
+    User hsuch
+    IdentityFile ~/.ssh/id_rsa
+    ForwardX11 yes
+
+Host clarity24
+    HostName clarity24.eecs.umich.edu
+    User hsuch
+    IdentityFile ~/.ssh/id_rsa
+    ForwardX11 yes
+
+Host claritymint
+    HostName 141.212.106.236
+    User hsuch
+    IdentityFile ~/.ssh/id_rsa
+    ForwardX11 yes
